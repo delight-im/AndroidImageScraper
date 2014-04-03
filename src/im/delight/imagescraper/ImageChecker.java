@@ -16,6 +16,7 @@ package im.delight.imagescraper;
  * limitations under the License.
  */
 
+import android.annotation.SuppressLint;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -38,6 +39,7 @@ public class ImageChecker {
      * 
      * @param callback callback where the results will be sent to
      */
+	@SuppressLint("NewApi")
 	public ImageChecker(ImageCheckerCallback callback, String userAgent, boolean allowCoreThreadTimeOut) {
     	mCallback = callback;
     	mImageURLs = new PriorityBlockingQueue<ImageURL>();
@@ -52,7 +54,9 @@ public class ImageChecker {
         };
         mUserAgent = userAgent;
         if (allowCoreThreadTimeOut) {
-        	mThreadPool.allowCoreThreadTimeOut(true);
+        	if (android.os.Build.VERSION.SDK_INT >= 9) {
+        		mThreadPool.allowCoreThreadTimeOut(true);
+        	}
         }
     }
 
