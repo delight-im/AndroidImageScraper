@@ -2,13 +2,13 @@ package im.delight.imagescraper;
 
 /**
  * Copyright 2013 www.delight.im <info@delight.im>
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,17 +30,18 @@ public class ImageCheckerTask implements Runnable {
 
     /**
      * Constructs a new single ImageChecker task with the given URL
-     * 
+     *
      * @param url image URL to check for MIME type and file size
+     * @param userAgent value for the `User-Agent` HTTP header
      */
     public ImageCheckerTask(String url, String userAgent) {
         mURL = url;
         mUserAgent = userAgent;
     }
-    
+
     /**
      * Returns the URL that this ImageChecker task has been working on
-     * 
+     *
      * @return image file URL
      */
     public String getURL() {
@@ -49,7 +50,7 @@ public class ImageCheckerTask implements Runnable {
 
     /**
      * Returns the file size that this ImageChecker task has found for the URL that was passed to it
-     * 
+     *
      * @return the image file's size
      */
     public int getFileSize() {

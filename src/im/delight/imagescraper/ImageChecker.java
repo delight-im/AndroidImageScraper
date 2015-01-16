@@ -2,13 +2,13 @@ package im.delight.imagescraper;
 
 /**
  * Copyright 2013 www.delight.im <info@delight.im>
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -33,11 +33,13 @@ public class ImageChecker {
     private final ThreadPoolExecutor mThreadPool;
     private ImageCheckerCallback mCallback;
     private String mUserAgent;
-    
+
     /**
      * Constructs a new ThreadedImageChecker with the given callback
-     * 
+     *
      * @param callback callback where the results will be sent to
+     * @param userAgent the value for the `User-Agent` HTTP header
+     * @param allowCoreThreadTimeOut value for `ThreadPoolExecutor.allowCoreThreadTimeOut()`
      */
 	@SuppressLint("NewApi")
 	public ImageChecker(ImageCheckerCallback callback, String userAgent, boolean allowCoreThreadTimeOut) {
@@ -62,7 +64,7 @@ public class ImageChecker {
 
     /**
      * Downloads the given list of URLs and returns the largest ones that have the correct MIME type
-     * 
+     *
      * @param urls list of URLs to download
      */
     public void start(Iterable<String> urls) {

@@ -2,13 +2,13 @@ package im.delight.imagescraper;
 
 /**
  * Copyright 2013 www.delight.im <info@delight.im>
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -22,27 +22,29 @@ public class ImageURL implements Comparable<ImageURL> {
 
 	private String mURL;
 	private int mFileSize;
-	
+
 	public ImageURL(String url, int fileSize) {
 		mURL = url;
 		mFileSize = fileSize;
 	}
-	
+
 	public String getURL() {
 		return mURL;
 	}
-	
+
 	public long getFileSize() {
 		return mFileSize;
 	}
-	
+
     public static Comparator<ImageURL> COMPARATOR = new Comparator<ImageURL>() {
-		public int compare(ImageURL arg0, ImageURL arg1) {
-			if (arg0.equals(arg1)) {
+
+    	@Override
+		public int compare(ImageURL a, ImageURL b) {
+			if (a.equals(b)) {
 				return 0;
 			}
-	    	long other = arg0.getFileSize();
-	    	long current = arg1.getFileSize();
+	    	long other = a.getFileSize();
+	    	long current = b.getFileSize();
 	        if (current > other) {
 	        	return 1;
 	        }
@@ -55,6 +57,7 @@ public class ImageURL implements Comparable<ImageURL> {
 	        	}
 	        }
 		}
+
     };
 
 	@Override
